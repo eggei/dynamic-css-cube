@@ -1,0 +1,77 @@
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  background: #223;
+  color: lightgray;
+}
+
+.scene {
+  width: 100%;
+  display: grid;
+  place-content: center;
+  // background-color: #556;
+  height: 500px;
+  // transform-style: preserve-3d;
+
+  .box {
+    transform-style: preserve-3d;
+    --box-width: 300px;
+    --box-height: 300px;
+    --box-depth: 300px;
+    //    background-color: #000c;
+    position: relative;
+    height: var(--box-height);
+    width: var(--box-width);
+
+    .face {
+      position: absolute;
+    }
+
+    .front,
+    .back {
+      background-color: #f006;
+      height: var(--box-height);
+      width: var(--box-width);
+      top: 0;
+    }
+
+    .back {
+      transform: translate3d(0, 0, calc(var(--box-depth) * -1));
+    }
+
+    .right,
+    .left {
+      background-color: #0fe6;
+      height: var(--box-height);
+      width: var(--box-depth);
+      transform-origin: right;
+      transform: rotateY(-90deg);
+      right: 0;
+    }
+    .left {
+      transform-origin: left;
+      transform: rotateY(90deg);
+      left: 0;
+    }
+
+    .top,
+    .bottom {
+      background-color: #efe6;
+      height: var(--box-depth);
+      width: var(--box-width);
+      transform-origin: top;
+      transform: rotateX(-90deg);
+      top: 0;
+    }
+    .bottom {
+      position: absolute;
+      transform: rotateX(-90deg) translate3d(0, 0, var(--box-height));
+      left: 0;
+    }
+  }
+}
