@@ -9,8 +9,6 @@ const App = () => {
   const initialDimensions = { w: 100, h: 100, d: 100 };
   const [selected, setSelected] = useState(initialDimensions);
   const cubeConfig = {
-    rotateX: coord.x * 180,
-    rotateY: coord.y * 180,
     dimensions: selected,
     style: { margin: 16 }
   };
@@ -66,7 +64,7 @@ const App = () => {
           ))}
         </div>
       </div>
-      <CubeScene>
+      <CubeScene rotateX={coord.x * 180} rotateY={coord.y * 180}>
         <div style={{ display: 'flex' }}>
           <div>
             {new Array(3).fill(null).map((_, i) => (

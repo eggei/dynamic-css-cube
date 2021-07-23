@@ -8,11 +8,14 @@ type Props = {
   style?: React.CSSProperties;
 };
 
-export const CubeScene = ({ children }) => {
+export const CubeScene = ({ children, rotateX = 0, rotateY = 0 }) => {
   return (
     <div
       className="scene"
-      style={{ perspective: 500, transform: 'scale(0.5)' }}
+      style={{
+        // perspective: 2000,
+        transform: `perspective(800px) rotateY(${rotateX}deg) rotateX(${rotateY}deg)`
+      }}
     >
       {children}
     </div>
@@ -21,7 +24,7 @@ export const CubeScene = ({ children }) => {
 
 export const Cube = ({
   rotateX = 0,
-  rotateY = -40,
+  rotateY = 0,
   dimensions: { w, h, d },
   style
 }: Props) => {
